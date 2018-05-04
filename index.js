@@ -1,4 +1,3 @@
-
 const botconfig = require("./botconfig.json");
 const tokenfile = require("./token.json");
 const Discord = require('discord.js');
@@ -19,11 +18,12 @@ bot.on("message", async message => {
     if(message.author.bot) return;
     if(message.channel.type === "dm") return;
 
+    let prefix = botconfig.prefix;
     let messageArray = message.content.split(" ");
     let cmd = messageArray[0];
     let args = messageArray.slice(1);
 
-    if(cmd === `Test`){
+    if(cmd === `${prefix}info`){
         let botembed = new Discord.RichEmbed()
             .setDescription("**Bot bilgisi**")
             .setColor("#2d845b")
